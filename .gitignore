@@ -100,3 +100,16 @@ coverage.xml
 # Results (keep structure but not data)
 pod*_output/
 !.gitkeep
+
+# Documentation build files
+docs/_build/
+docs/site/
+
+# Cache
+.cache/
+*.cache
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
