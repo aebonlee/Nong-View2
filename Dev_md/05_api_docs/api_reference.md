@@ -563,7 +563,7 @@ class ProcessingError(PODError):
     "data": {},
     "metadata": {
         "processing_time": 123.45,
-        "timestamp": "2024-11-06T12:00:00Z"
+        "timestamp": "2025-11-06T12:00:00Z"
     }
 }
 ```
@@ -579,7 +579,7 @@ class ProcessingError(PODError):
         "details": "The specified file does not exist"
     },
     "metadata": {
-        "timestamp": "2024-11-06T12:00:00Z"
+        "timestamp": "2025-11-06T12:00:00Z"
     }
 }
 ```
@@ -690,4 +690,4 @@ print(f"Merged {len(detections_data['detections'])} to "
 ---
 
 API 버전: 1.0.0
-최종 수정: 2024-11-06
+최종 수정: 2025-11-06

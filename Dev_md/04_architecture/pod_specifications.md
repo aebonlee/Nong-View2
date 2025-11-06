@@ -1004,4 +1004,4 @@ def handle_error(self, error: Exception) -> None:
 ---
 
 문서 버전: 1.0.0
-최종 수정: 2024-11-06
+최종 수정: 2025-11-06
