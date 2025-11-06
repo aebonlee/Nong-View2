@@ -1,0 +1,102 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Virtual environments
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files
+data/input/*
+data/output/*
+data/temp/*
+!data/input/.gitkeep
+!data/output/.gitkeep
+!data/temp/.gitkeep
+
+# Model files
+models/yolov11/*.pt
+models/yolov11/*.onnx
+models/yolov11/*.pth
+!models/yolov11/.gitkeep
+
+# Log files
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Environment variables
+.env
+.env.local
+
+# Output files
+*.tif
+*.tiff
+*.ecw
+*.gpkg
+*.geojson
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Results (keep structure but not data)
+pod*_output/
+!.gitkeep

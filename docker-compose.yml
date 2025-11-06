@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  nongview2:
+    build: .
+    container_name: nongview2-pipeline
+    volumes:
+      - ./data/input:/app/data/input
+      - ./data/output:/app/data/output
+      - ./models:/app/models
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python main.py --help
+    
+  # Optional: PostgreSQL for future database integration
+  # postgres:
+  #   image: postgis/postgis:14-3.2
+  #   container_name: nongview2-db
+  #   environment:
+  #     - POSTGRES_DB=nongview
+  #     - POSTGRES_USER=nongview
+  #     - POSTGRES_PASSWORD=nongview123
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+# volumes:
+#   postgres_data:

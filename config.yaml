@@ -1,0 +1,107 @@
+# Nong-View2 Configuration
+
+# General settings
+project:
+  name: "Nong-View2"
+  version: "1.0.0"
+  description: "지리정보 기반 AI 농업 분석 파이프라인"
+
+# Data paths
+paths:
+  input_dir: "data/input"
+  output_dir: "data/output"
+  temp_dir: "data/temp"
+  model_dir: "models/yolov11"
+  log_dir: "logs"
+
+# POD1: Ingestion settings
+ingestion:
+  supported_formats: ["tif", "tiff", "ecw", "jpg", "png"]
+  ecw_to_tif: true
+  validate_crs: true
+  target_crs: "EPSG:5186"  # Korea 2000 Central Belt
+  excel_pnu_column: "PNU"
+  excel_address_column: "지번"
+
+# POD2: Cropping settings
+cropping:
+  use_convex_hull: true
+  buffer_size: 10  # meters
+  min_area: 100  # square meters
+  validate_geometry: true
+
+# POD3: Tiling settings
+tiling:
+  tile_size: 1024  # pixels
+  overlap: 0.2  # 20% overlap
+  output_format: "tif"
+  adaptive_tiling: true
+  min_tile_size: 512
+  max_tile_size: 2048
+
+# POD4: AI Analysis settings
+ai_analysis:
+  model_name: "yolov11x-seg"
+  classes:
+    0: "생육기_사료작물"
+    1: "생산기_사료작물"
+    2: "곤포_사일리지"
+    3: "비닐하우스_단동"
+    4: "비닐하우스_연동"
+    5: "경작지_드론"
+    6: "경작지_위성"
+  confidence_threshold: 0.25
+  iou_threshold: 0.45
+  device: "cuda"  # or "cpu"
+  batch_size: 8
+  augmentation: true
+  quality_filter: true
+  save_visualizations: true
+
+# POD5: Merging settings
+merging:
+  merge_strategy: "nms"  # non-maximum suppression
+  iou_threshold: 0.5
+  min_confidence: 0.3
+  group_by_class: true
+  spatial_index: true
+
+# POD6: GPKG Export settings
+gpkg_export:
+  output_format: "gpkg"
+  layers:
+    - name: "parcels"
+      geometry: "polygon"
+    - name: "detections"
+      geometry: "polygon"
+    - name: "statistics"
+      geometry: "none"
+  include_metadata: true
+  coordinate_system: "EPSG:5186"
+  calculate_area: true
+  generate_report: true
+  capture_screenshots: true
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "{time} | {level} | {message}"
+  rotation: "100 MB"
+  retention: "7 days"
+  colorize: true
+
+# Performance settings
+performance:
+  num_workers: 4
+  max_memory: "8GB"
+  cache_enabled: true
+  parallel_processing: true
+  gpu_memory_fraction: 0.8
+
+# Quality control
+quality:
+  min_image_quality: 0.7
+  detect_blur: true
+  detect_artifacts: true
+  validate_annotations: true
+  outlier_detection: true
